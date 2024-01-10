@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ProfileService.Entities;
+using ProfileService.Data.DTOs;
 
 namespace ProfileService.Data
 {
@@ -50,6 +51,7 @@ namespace ProfileService.Data
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict); // Specify the desired cascade behavior, in this case, restrict
         }
+//public DbSet<ProfileService.Data.DTOs.userDTO> userDTO { get; set; } = default!;
 
 
 

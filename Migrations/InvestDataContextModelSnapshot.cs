@@ -194,11 +194,9 @@ namespace ProfileService.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CountryCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DateOfBirth")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -209,7 +207,6 @@ namespace ProfileService.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Language")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -219,7 +216,6 @@ namespace ProfileService.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Login")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
@@ -234,11 +230,16 @@ namespace ProfileService.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<Guid>("RefreshTokenId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RevokeTokenId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("RolesId")
                         .HasColumnType("uniqueidentifier");
@@ -257,18 +258,15 @@ namespace ProfileService.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("firstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("firstSeen")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("imageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("lastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("lastSeen")
@@ -613,14 +611,11 @@ namespace ProfileService.Migrations
                 {
                     b.Navigation("Organization");
 
-                    b.Navigation("RefreshToken")
-                        .IsRequired();
+                    b.Navigation("RefreshToken");
 
-                    b.Navigation("RevokeToken")
-                        .IsRequired();
+                    b.Navigation("RevokeToken");
 
-                    b.Navigation("Roles")
-                        .IsRequired();
+                    b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("ProfileService.Entities.Organization", b =>
